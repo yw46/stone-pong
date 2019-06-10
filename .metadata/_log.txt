@@ -1,0 +1,387 @@
+!SESSION 2019-06-06 15:09:54.968 -----------------------------------------------
+eclipse.buildId=4.8.0.I20180308-0630
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.recommenders.chain.rcp 4 0 2019-06-06 15:10:00.431
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.recommenders.chain.rcp [382]
+  Unresolved requirement: Require-Bundle: org.eclipse.recommenders.completion.rcp; bundle-version="[2.5.2,2.5.3)"
+    -> Bundle-SymbolicName: org.eclipse.recommenders.completion.rcp; bundle-version="2.5.2.v20180306-2013"; singleton:="true"
+       org.eclipse.recommenders.completion.rcp [383]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.recommenders.chain.rcp [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180228-0849"; osgi.identity="org.eclipse.recommenders.chain.rcp"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"] and com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.recommenders.chain.rcp [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180228-0849"; osgi.identity="org.eclipse.recommenders.chain.rcp"; singleton:="true"]
+    import: (&(osgi.wiring.package=com.google.common.base)(&(version>=15.0.0)(!(version>=16.0.0))))
+     |
+    export: osgi.wiring.package: com.google.common.base
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.eclipse.recommenders.chain.rcp [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180228-0849"; osgi.identity="org.eclipse.recommenders.chain.rcp"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.eclipse.recommenders.completion.rcp)(&(bundle-version>=2.5.2)(!(bundle-version>=2.5.3))))
+     |
+    provide: [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180306-2013"; osgi.identity="org.eclipse.recommenders.completion.rcp"; singleton:="true"] osgi.wiring.bundle; {bundle-version=2.5.2.v20180306-2013, osgi.wiring.bundle=org.eclipse.recommenders.completion.rcp}
+  org.eclipse.recommenders.completion.rcp [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180306-2013"; osgi.identity="org.eclipse.recommenders.completion.rcp"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=com.google.guava)(&(bundle-version>=10.0.0)(!(bundle-version>=11.0.0))))
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"]
+	at org.eclipse.osgi.container.Module.start(Module.java:444)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1682)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1624)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1555)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.equinox.http.servlet 4 0 2019-06-06 15:10:00.599
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.equinox.http.servlet [582]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.equinox.http.servlet [osgi.identity; type="osgi.bundle"; version:Version="1.1.300.v20120912-130548"; osgi.identity="org.eclipse.equinox.http.servlet"] because it is exposed to package 'javax.servlet' from resources javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.0.0.v201112011016"; osgi.identity="javax.servlet"] and javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.equinox.http.servlet [osgi.identity; type="osgi.bundle"; version:Version="1.1.300.v20120912-130548"; osgi.identity="org.eclipse.equinox.http.servlet"]
+    import: (&(osgi.wiring.package=javax.servlet)(&(version>=2.3.0)(!(version>=3.1.0))))
+     |
+    export: osgi.wiring.package: javax.servlet
+  javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.0.0.v201112011016"; osgi.identity="javax.servlet"]
+
+Chain 2:
+  org.eclipse.equinox.http.servlet [osgi.identity; type="osgi.bundle"; version:Version="1.1.300.v20120912-130548"; osgi.identity="org.eclipse.equinox.http.servlet"]
+    import: (&(osgi.wiring.package=javax.servlet.annotation)(version>=2.6.0))
+     |
+    export: osgi.wiring.package: javax.servlet.annotation; uses:=javax.servlet
+    export: osgi.wiring.package=javax.servlet
+  javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"]
+	at org.eclipse.osgi.container.Module.start(Module.java:444)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1682)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1624)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1555)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.equinox.jsp.jasper 4 0 2019-06-06 15:10:00.617
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.equinox.jsp.jasper [583]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.equinox.jsp.jasper [osgi.identity; type="osgi.bundle"; version:Version="1.0.400.v20120912-130548"; osgi.identity="org.eclipse.equinox.jsp.jasper"] because it is exposed to package 'javax.servlet' from resources javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.0.0.v201112011016"; osgi.identity="javax.servlet"] and javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.equinox.jsp.jasper [osgi.identity; type="osgi.bundle"; version:Version="1.0.400.v20120912-130548"; osgi.identity="org.eclipse.equinox.jsp.jasper"]
+    import: (&(osgi.wiring.package=javax.servlet)(&(version>=2.4.0)(!(version>=3.1.0))))
+     |
+    export: osgi.wiring.package: javax.servlet
+  javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.0.0.v201112011016"; osgi.identity="javax.servlet"]
+
+Chain 2:
+  org.eclipse.equinox.jsp.jasper [osgi.identity; type="osgi.bundle"; version:Version="1.0.400.v20120912-130548"; osgi.identity="org.eclipse.equinox.jsp.jasper"]
+    import: (&(osgi.wiring.package=javax.servlet.annotation)(version>=2.6.0))
+     |
+    export: osgi.wiring.package: javax.servlet.annotation; uses:=javax.servlet
+    export: osgi.wiring.package=javax.servlet
+  javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"]
+	at org.eclipse.osgi.container.Module.start(Module.java:444)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1682)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1624)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1555)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.recommenders.completion.rcp.calls 4 0 2019-06-06 15:10:00.714
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.recommenders.completion.rcp.calls [621]
+  Unresolved requirement: Require-Bundle: org.eclipse.recommenders.completion.rcp
+    -> Bundle-SymbolicName: org.eclipse.recommenders.completion.rcp; bundle-version="2.5.2.v20180306-2013"; singleton:="true"
+       org.eclipse.recommenders.completion.rcp [383]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.eclipse.recommenders.extdoc.rcp; resolution:="optional"
+    -> Bundle-SymbolicName: org.eclipse.recommenders.extdoc.rcp; bundle-version="1.0.3.v20130211-0152-b208"; singleton:="true"
+       org.eclipse.recommenders.extdoc.rcp [629]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.recommenders.completion.rcp.calls [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.calls"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"] and com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.recommenders.completion.rcp.calls [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.calls"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=com.google.guava)(&(bundle-version>=10.0.0)(!(bundle-version>=11.0.0))))
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.eclipse.recommenders.completion.rcp.calls [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.calls"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.eclipse.recommenders.rcp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.5.2.v20180306-2013"; osgi.wiring.bundle="org.eclipse.recommenders.rcp"; singleton:="true"
+  org.eclipse.recommenders.rcp [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180306-2013"; osgi.identity="org.eclipse.recommenders.rcp"; singleton:="true"]
+    import: (&(osgi.wiring.package=com.google.common.base)(&(version>=15.0.0)(!(version>=16.0.0))))
+     |
+    export: osgi.wiring.package: com.google.common.base
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"]
+	at org.eclipse.osgi.container.Module.start(Module.java:444)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1682)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1624)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1555)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.recommenders.completion.rcp.chain 4 0 2019-06-06 15:10:00.803
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.recommenders.completion.rcp.chain [622]
+  Unresolved requirement: Require-Bundle: org.eclipse.recommenders.completion.rcp
+    -> Bundle-SymbolicName: org.eclipse.recommenders.completion.rcp; bundle-version="2.5.2.v20180306-2013"; singleton:="true"
+       org.eclipse.recommenders.completion.rcp [383]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.recommenders.completion.rcp.chain [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.chain"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"] and com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.recommenders.completion.rcp.chain [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.chain"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=com.google.guava)(&(bundle-version>=10.0.0)(!(bundle-version>=11.0.0))))
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.eclipse.recommenders.completion.rcp.chain [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.chain"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.eclipse.recommenders.utils)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.5.2.v20180228-0849"; osgi.wiring.bundle="org.eclipse.recommenders.utils"
+  org.eclipse.recommenders.utils [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180228-0849"; osgi.identity="org.eclipse.recommenders.utils"]
+    import: (&(osgi.wiring.package=com.google.common.base)(&(version>=15.0.0)(!(version>=16.0.0))))
+     |
+    export: osgi.wiring.package: com.google.common.base
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"]
+	at org.eclipse.osgi.container.Module.start(Module.java:444)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1682)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1624)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1555)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.recommenders.completion.rcp.overrides 4 0 2019-06-06 15:10:00.863
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.recommenders.completion.rcp.overrides [624]
+  Unresolved requirement: Require-Bundle: org.eclipse.recommenders.completion.rcp
+    -> Bundle-SymbolicName: org.eclipse.recommenders.completion.rcp; bundle-version="2.5.2.v20180306-2013"; singleton:="true"
+       org.eclipse.recommenders.completion.rcp [383]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.recommenders.completion.rcp.overrides [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.overrides"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"] and com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.recommenders.completion.rcp.overrides [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.overrides"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=com.google.guava)(&(bundle-version>=10.0.0)(!(bundle-version>=11.0.0))))
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.eclipse.recommenders.completion.rcp.overrides [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.overrides"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.eclipse.recommenders.rcp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.5.2.v20180306-2013"; osgi.wiring.bundle="org.eclipse.recommenders.rcp"; singleton:="true"
+  org.eclipse.recommenders.rcp [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180306-2013"; osgi.identity="org.eclipse.recommenders.rcp"; singleton:="true"]
+    import: (&(osgi.wiring.package=com.google.common.base)(&(version>=15.0.0)(!(version>=16.0.0))))
+     |
+    export: osgi.wiring.package: com.google.common.base
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"]
+	at org.eclipse.osgi.container.Module.start(Module.java:444)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1682)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1624)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1555)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.recommenders.completion.rcp.templates 4 0 2019-06-06 15:10:00.904
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.recommenders.completion.rcp.templates [626]
+  Unresolved requirement: Require-Bundle: org.eclipse.recommenders.completion.rcp
+    -> Bundle-SymbolicName: org.eclipse.recommenders.completion.rcp; bundle-version="2.5.2.v20180306-2013"; singleton:="true"
+       org.eclipse.recommenders.completion.rcp [383]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.eclipse.recommenders.completion.rcp.calls
+    -> Bundle-SymbolicName: org.eclipse.recommenders.completion.rcp.calls; bundle-version="1.0.3.v20130211-0152-b208"; singleton:="true"
+       org.eclipse.recommenders.completion.rcp.calls [621]
+         Unresolved requirement: Require-Bundle: org.eclipse.recommenders.completion.rcp
+           -> Bundle-SymbolicName: org.eclipse.recommenders.completion.rcp; bundle-version="2.5.2.v20180306-2013"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.eclipse.recommenders.extdoc.rcp; resolution:="optional"
+           -> Bundle-SymbolicName: org.eclipse.recommenders.extdoc.rcp; bundle-version="1.0.3.v20130211-0152-b208"; singleton:="true"
+              org.eclipse.recommenders.extdoc.rcp [629]
+                No resolution report for the bundle.  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.recommenders.completion.rcp.templates [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.templates"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"] and com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.recommenders.completion.rcp.templates [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.templates"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=com.google.guava)(&(bundle-version>=10.0.0)(!(bundle-version>=11.0.0))))
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.eclipse.recommenders.completion.rcp.templates [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.completion.rcp.templates"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.eclipse.recommenders.utils)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.5.2.v20180228-0849"; osgi.wiring.bundle="org.eclipse.recommenders.utils"
+  org.eclipse.recommenders.utils [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180228-0849"; osgi.identity="org.eclipse.recommenders.utils"]
+    import: (&(osgi.wiring.package=com.google.common.base)(&(version>=15.0.0)(!(version>=16.0.0))))
+     |
+    export: osgi.wiring.package: com.google.common.base
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"]
+	at org.eclipse.osgi.container.Module.start(Module.java:444)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1682)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1624)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1555)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.recommenders.extdoc.rcp 4 0 2019-06-06 15:10:00.933
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.recommenders.extdoc.rcp [629]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.recommenders.extdoc.rcp [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.extdoc.rcp"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"] and com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.recommenders.extdoc.rcp [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.extdoc.rcp"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=com.google.guava)(&(bundle-version>=10.0.0)(!(bundle-version>=11.0.0))))
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="10.0.1.v201203051515"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.eclipse.recommenders.extdoc.rcp [osgi.identity; type="osgi.bundle"; version:Version="1.0.3.v20130211-0152-b208"; osgi.identity="org.eclipse.recommenders.extdoc.rcp"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.eclipse.recommenders.rcp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.5.2.v20180306-2013"; osgi.wiring.bundle="org.eclipse.recommenders.rcp"; singleton:="true"
+  org.eclipse.recommenders.rcp [osgi.identity; type="osgi.bundle"; version:Version="2.5.2.v20180306-2013"; osgi.identity="org.eclipse.recommenders.rcp"; singleton:="true"]
+    import: (&(osgi.wiring.package=com.google.common.base)(&(version>=15.0.0)(!(version>=16.0.0))))
+     |
+    export: osgi.wiring.package: com.google.common.base
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="15.0.0.v201403281430"; osgi.identity="com.google.guava"]
+	at org.eclipse.osgi.container.Module.start(Module.java:444)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1682)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1624)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1555)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-06-06 15:10:57.924
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.mylyn.tasks.core 1 0 2019-06-06 15:10:58.087
+!MESSAGE Migrating task repository credentials from keyring.
+
+!ENTRY org.eclipse.ui 4 4 2019-06-06 15:12:04.496
+!MESSAGE An internal error has occurred.
+!STACK 0
+org.eclipse.swt.SWTError: Cannot initialize Drop
+	at org.eclipse.swt.dnd.DND.error(DND.java:277)
+	at org.eclipse.swt.dnd.DND.error(DND.java:238)
+	at org.eclipse.swt.dnd.DropTarget.<init>(DropTarget.java:135)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceDropAdapter.installDropTarget(MarketplaceDropAdapter.java:59)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceDropAdapter$1.runInUIThread(MarketplaceDropAdapter.java:48)
+	at org.eclipse.ui.progress.UIJob.lambda$0(UIJob.java:95)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:37)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4218)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3825)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1150)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1039)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:681)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:595)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+!SESSION 2019-06-06 21:49:15.432 -----------------------------------------------
+eclipse.buildId=4.10.0.I20181206-0815
+java.version=1.8.0_201
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2019-06-06 21:49:53.909
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://org.eclipse.recommenders.news.rcp/org.eclipse.recommenders.internal.news.rcp.poll.PollNewsFeedsHandler
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2019-06-06 21:49:53.929
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://org.eclipse.recommenders.news.rcp/org.eclipse.recommenders.internal.news.rcp.read.ReadNewsItemsHandler
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2019-06-06 21:50:57.108
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://org.eclipse.recommenders.news.rcp/org.eclipse.recommenders.internal.news.rcp.toolbar.NewsToolControl
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-06-06 21:51:01.300
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Stone Luo'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:01.533
+!MESSAGE Removing part descriptor with the 'org.eclipse.recommenders.apidocs.rcp.views.apidocs' id and the 'Augmented Docs' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:04.198
+!MESSAGE Removing part descriptor with the 'org.eclipse.recommenders.models.rcp.views.projectCoordinates' id and the 'Project Coordinates' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:06.068
+!MESSAGE Removing part descriptor with the 'org.eclipse.recommenders.models.rcp.views.modelRepositories' id and the 'Model Repositories' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:08.374
+!MESSAGE Removing part descriptor with the 'org.eclipse.recommenders.models.rcp.views.dependencyOverview' id and the 'Dependency Overview' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:08.526
+!MESSAGE Removing part descriptor with the 'org.eclipse.recommenders.snipmatch.rcp.views.snippets' id and the 'Snippets' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:08.583
+!MESSAGE Removing part descriptor with the 'org.eclipse.team.ccvs.ui.RepositoriesView' id and the 'CVS Repositories' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:08.584
+!MESSAGE Removing part descriptor with the 'org.eclipse.team.ccvs.ui.EditorsView' id and the 'CVS Editors' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:08.587
+!MESSAGE Removing part descriptor with the 'org.eclipse.wb.core.StructureView' id and the 'Structure' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-06-06 21:51:08.589
+!MESSAGE Removing part descriptor with the 'org.eclipse.wb.core.PaletteView' id and the 'Palette' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
